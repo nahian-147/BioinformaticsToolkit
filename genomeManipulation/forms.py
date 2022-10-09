@@ -5,3 +5,9 @@ class TranslationForm(forms.ModelForm):
 	class Meta:
 		model = GenomeSequence
 		fields = ['genomeSequence']
+
+
+class ReverseComplementForm(forms.ModelForm):
+	class Meta:
+		model = GenomeSequence
+		fields = ['genomeSequence']

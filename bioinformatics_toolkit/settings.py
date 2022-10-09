@@ -61,21 +61,9 @@ WSGI_APPLICATION = 'bioinformatics_toolkit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bioinformatics_toolkit',
-        'USER': 'root',
-        'PASSWORD': 'kazi_81',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'writing_instruments',
-    #     'USER': 'root',
-    #     'PASSWORD': 'kazi_81',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
