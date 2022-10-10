@@ -32,7 +32,7 @@ def translation(request):
             form = TranslationForm()
     return render(request,'genomeManipulation/translation.html',{'form': form})
     
-def reverseComplement(request):
+def reverseComplementView(request):
     form = ReverseComplementForm(request.POST) 
 
     if request.method == 'POST':
@@ -42,14 +42,14 @@ def reverseComplement(request):
             genomeSequence = form.cleaned_data.get("genomeSequence")
             
             context = {
-                'reversed_sequence' : reverse(genomeSequence),
+                'reversed_sequence' : reverseComplement(genomeSequence),
                 'form': form
             }
 
-            return render(request,'genomeManipulation/reverse.html',context)
+            return render(request,'genomeManipulation/reverse_complement.html',context)
 
             
         else:
             form = ReverseComplementForm()
-    return render(request,'genomeManipulation/reverse.html',{'form': form})
+    return render(request,'genomeManipulation/reverse_complement.html',{'form': form})
 

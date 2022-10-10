@@ -6,9 +6,9 @@ complementDictionary = {
 }
 
 
-def complement(genome):
-    complementGenome = ''
+def reverseComplement(genome):
+    reverseComplement = ''
     for base in genome:
-        complementGenome += complementDictionary[base]
+        reverseComplement += complementDictionary[base]
 
-    return complementGenome(string[::-1])
+    return reverseComplement[::-1]

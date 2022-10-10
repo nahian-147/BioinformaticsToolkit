@@ -5,5 +5,5 @@ from . import views
 urlpatterns = [
     path('',views.genomeManipulationHome,name='home'),
     path('translation/',views.translation,name='translation' ),
-    path('reverse_complement/',views.reverse_complement,name='reverse_complement' ),
+    path('reverse_complement/',views.reverseComplementView,name='reverseComplementView'),
 ]
