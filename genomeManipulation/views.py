@@ -53,3 +53,23 @@ def reverseComplementView(request):
             form = ReverseComplementForm()
     return render(request,'genomeManipulation/reverse_complement.html',{'form': form})
 
+def proteinSynthesisView(request):
+    form = ProteinSynthesisForm(request.POST) 
+
+    if request.method == 'POST':
+        form = ProteinSynthesisForm(request.POST)
+        if form.is_valid():
+            form.save()
+            genomeSequence = form.cleaned_data.get("genomeSequence")
+            
+            context = {
+                'converted_sequence' : findPotentialCodingSegments(genomeSequence),
+                'form': form
+            }
+
+            return render(request,'genomeManipulation/protein_synthesis.html',context)
+
+            
+        else:
+            form = ProteinSynthesisForm()
+    return render(request,'genomeManipulation/protein_synthesis.html',{'form': form})

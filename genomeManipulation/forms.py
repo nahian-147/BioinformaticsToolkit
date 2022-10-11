@@ -11,3 +11,8 @@ class ReverseComplementForm(forms.ModelForm):
 	class Meta:
 		model = GenomeSequence
 		fields = ['genomeSequence']
+
+class ProteinSynthesisForm(forms.ModelForm):
+	class Meta:
+		model = GenomeSequence
+		fields = ['genomeSequence']
