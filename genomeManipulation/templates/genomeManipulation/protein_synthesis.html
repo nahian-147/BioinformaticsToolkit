@@ -1,0 +1,29 @@
+{% extends "genomeManipulation/base.html" %}
+{% load static  %} 
+{% block content %}
+
+<section id="home">
+    <div class="container">
+		<form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/genome_manipulation/protein_synthesis/">
+            {% csrf_token %}
+            <fieldset>
+            <legend>Enter Your Sequence Here</legend>
+               {{ form.as_p }}
+            </fieldset>
+            <div>
+               <button type="submit">Add</button>
+            </div>
+
+            <h3>{{ converted_sequence }}</h3>
+         </form>
+	</div>
+</section>
+	
+<script src="{% static 'genomeManipulations/js/jquery-3.5.1.js' %}"></script>
+<script src="{% static 'genomeManipulations/js/jquery.dataTables.min.js' %}"></script>
+<!-- <script>
+    $(document).ready(function () {
+        $('#allFountainPensTable').DataTable();
+    });
+</script> -->
+{% endblock content%}

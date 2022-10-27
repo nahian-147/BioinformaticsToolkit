@@ -6,6 +6,8 @@ from .models import GenomeSequence
 from .translation import translate
 from .forms import ReverseComplementForm
 from .reverse_complement import reverseComplement
+from .protein_synthesis import computeProteinChain
+from .forms import ProteinSynthesisForm
 
 
 def genomeManipulationHome(request):
@@ -63,7 +65,7 @@ def proteinSynthesisView(request):
             genomeSequence = form.cleaned_data.get("genomeSequence")
             
             context = {
-                'converted_sequence' : findPotentialCodingSegments(genomeSequence),
+                'converted_sequence' : computeProteinChain(genomeSequence),
                 'form': form
             }
 

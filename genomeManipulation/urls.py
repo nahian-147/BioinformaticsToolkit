@@ -4,7 +4,7 @@ from django.urls import path
 
 from . import views
 
-jls_extract_var = [
+urlpatterns = [
     path('',views.genomeManipulationHome,name='home'),
 
     path('translation/',views.translation,name='translation' ),
@@ -12,4 +12,4 @@ jls_extract_var = [
     path('reverse_complement/',views.reverseComplementView,name='reverseComplementView'),
 
     path('protein_synthesis/',views.proteinSynthesisView,name='proteinSynthesisView'),
-urlpatterns = jls_extract_var
+]
