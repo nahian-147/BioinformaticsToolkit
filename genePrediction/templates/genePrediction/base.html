@@ -40,32 +40,35 @@
 
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Writing Instruments</a>
+          <a class="navbar-brand" href="">BIOINFORMATICS TOOLKIT</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/home">Home</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Fountain Pens
+              </li> {% endcomment %}
+              {% comment %} <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="genome_manipulation/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Genome Manipulation
                 </a>
-                <!-- <ul class="dropdown-menu">
+                <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/fountainpens/">Fountain Pens</a></li>
                   <li><a class="dropdown-item" href="/fountainpens/nibs/">Nib</a></li>
-                </ul> -->
+                </ul>
+              </li> {% endcomment %}
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/genome_manipulation">Genome Manipulation</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Rollerball Pens</a>
+                <a class="nav-link" href="/gene_prediction/">Gene Prediction</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Ballpoint Pens</a>
+                <a class="nav-link" href="#">Gene Clustering</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Brands</a>
+                <a class="nav-link" href="#">Phylogenetic Tree</a>
               </li>
             </ul>
           </div>
