@@ -1,44 +1,48 @@
 from .translation import translate
-from .translation import translatorDictionary
 
 codonTable = {
-		'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
-		'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
-		'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
-		'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',				
-		'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
-		'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P',
-		'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q',
-		'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R',
-		'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V',
-		'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
-		'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E',
-		'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G',
-		'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S',
-		'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
-		'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
-		'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
+		'AUA':'I', 'AUC':'I', 'AUU':'I', 'AUG':'M',
+		'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACU':'T',
+		'AAC':'N', 'AAU':'N', 'AAA':'K', 'AAG':'K',
+		'AGC':'S', 'AGU':'S', 'AGA':'R', 'AGG':'R',				
+		'CUA':'L', 'CUC':'L', 'CUG':'L', 'CUU':'L',
+		'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCU':'P',
+		'CAC':'H', 'CAU':'H', 'CAA':'Q', 'CAG':'Q',
+		'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGU':'R',
+		'GUA':'V', 'GUC':'V', 'GUG':'V', 'GUU':'V',
+		'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCU':'A',
+		'GAC':'D', 'GAU':'D', 'GAA':'E', 'GAG':'E',
+		'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGU':'G',
+		'UCA':'S', 'UCC':'S', 'UCG':'S', 'UCU':'S',
+		'UUC':'F', 'UUU':'F', 'UUA':'L', 'UUG':'L',
+		'UAC':'Y', 'UAU':'Y', 'UGC':'C', 'UGU':'C', 
+		'UGG':'W',
 	}
 
 
-start = ""
+start = "AUG"
 
-stops = []
+stops = ['UAA','UGA','UAG']
 
 def computeProteinChain(genome):
 
-    startIndex = genome.find(start)
+	genome = translate(genome)
+	
+	startIndex = genome.find(start)
+	
+	stopIndices = [genome.find(stop) for stop in stops]
 
-    stopIndices = [genome.find(stop) for stop in stops]
-
-    potentialCodingRegions = [genome[startIndex:stopIndex] for stopIndex in stopIndices]
-
-    proteins = []
-
-    for potentialCodingRegion in potentialCodingRegions and len(potentialCodingRegion)%3 == 0:
-        protein = ""
-        for i in range(0,len(potentialCodingRegion)-3,3):
-            protein += codonTable[potentialCodingRegion[i:i+3]]
-        proteins.append(protein)
-
-    return proteins
+	stopIndices = [_ for _ in stopIndices if _ >= 0 ]
+	
+	potentialCodingRegions = [genome[startIndex:stopIndex] for stopIndex in stopIndices]
+	
+	proteins = []
+	
+	for potentialCodingRegion in potentialCodingRegions:
+		if len(potentialCodingRegion) % 3 == 0:
+			protein = ""
+			for i in range(0,len(potentialCodingRegion)-3,3):
+				protein += codonTable[potentialCodingRegion[i:i+3]]
+			proteins.append(protein)
+			
+	return proteins

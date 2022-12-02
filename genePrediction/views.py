@@ -30,6 +30,6 @@ def predict(request):
             }
             return render(request,'genePrediction/open_reading_frame.html',context)
         else:
-            return render(request,'genePrediction/home.html',{'form' : UploadFileForm()})
+            return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm()})
     else:
-        return render(request,'genePrediction/home.html',{'form' : UploadFileForm()})
+        return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm()})

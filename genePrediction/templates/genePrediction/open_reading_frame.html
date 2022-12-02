@@ -1,24 +1,19 @@
-{% extends "genomeManipulation/base.html" %}
+{% extends "base.html" %}
 {% load static  %} 
 {% block content %}
 
-<section id="home">
+<section id="openReadingFrames">
     <div class="container">
-		<div class="genes">
-			{% for genes in orfs %}
-				<p>{% for el in genes %}
-					{{el}}<br>
-				{% endfor %}</p>
-			{% endfor %}
+		<div class="plate">
+			<div class="sequence">
+				{% for genes in orfs %}
+					<p>{% for el in genes %}
+						{{el}}<br>
+					{% endfor %}</p>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 </section>
 	
-<script src="{% static 'genomeManipulations/js/jquery-3.5.1.js' %}"></script>
-<script src="{% static 'genomeManipulations/js/jquery.dataTables.min.js' %}"></script>
-<!-- <script>
-    $(document).ready(function () {
-        $('#allFountainPensTable').DataTable();
-    });
-</script> -->
 {% endblock content%}

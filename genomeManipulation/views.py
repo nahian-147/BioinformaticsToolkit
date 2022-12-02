@@ -7,10 +7,6 @@ from .translation import translate
 from .reverse_complement import reverseComplement
 from .protein_synthesis import computeProteinChain
 
-def genomeManipulationHome(request):
-    return render(request,'genomeManipulation/home.html')
-
-
 def translation(request):
     form = GenomeSequenceInputForm(request.POST) 
 

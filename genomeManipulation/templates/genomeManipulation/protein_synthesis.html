@@ -1,4 +1,4 @@
-{% extends "genomeManipulation/base.html" %}
+{% extends "base.html" %}
 {% load static  %} 
 {% block content %}
 
@@ -14,16 +14,14 @@
                <button type="submit">Add</button>
             </div>
 
-            <h3>{{ converted_sequence }}</h3>
+            <div class="sequence">
+               {% for sequence in converted_sequence %}
+                  <h3>{{ sequence }}</h3>
+				   {% endfor %}
+            </div>
+
          </form>
 	</div>
 </section>
 	
-<script src="{% static 'genomeManipulations/js/jquery-3.5.1.js' %}"></script>
-<script src="{% static 'genomeManipulations/js/jquery.dataTables.min.js' %}"></script>
-<!-- <script>
-    $(document).ready(function () {
-        $('#allFountainPensTable').DataTable();
-    });
-</script> -->
 {% endblock content%}
