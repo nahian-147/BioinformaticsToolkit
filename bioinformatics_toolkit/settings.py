@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-wulf6+s(!85a*bsu9w_ul5#+!yd&uixb96(@*a4l9v_i0lxlf*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -25,7 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'basicClassesAndForms.apps.BasicclassesandformsConfig',
     'genomeManipulation.apps.GenomemanipulationConfig',
+    'genePrediction.apps.GenepredictionConfig',
 ]
 
 MIDDLEWARE = [
