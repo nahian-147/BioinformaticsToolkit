@@ -1,0 +1,7 @@
+.plate{
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    border: 15px;
+    padding: 10px;
+    width: 100%;
+    scroll-behavior: inherit;
+  }

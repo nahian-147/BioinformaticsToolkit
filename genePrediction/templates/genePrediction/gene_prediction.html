@@ -4,7 +4,8 @@
 
 <section id="genePrediction">
     <div class="container">
-		<form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/gene_prediction/genes/">
+		<div class="plate">
+         <form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/gene_prediction/genes/">
             {% csrf_token %}
             <fieldset>
             <legend>Enter Your Sequence Here</legend>
@@ -13,9 +14,8 @@
             <div>
                <button type="submit">SUBMIT</button>
             </div>
-
-            <h3 class="sequence">{{ converted_sequence }}</h3>
          </form>
+      </div>
 	</div>
 </section>
 	

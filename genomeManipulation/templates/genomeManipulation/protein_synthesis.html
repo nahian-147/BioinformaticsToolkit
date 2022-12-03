@@ -4,7 +4,9 @@
 
 <section id="home">
     <div class="container">
-		<form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/genome_manipulation/protein_synthesis/">
+		
+      <div class="plate">
+         <form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/genome_manipulation/protein_synthesis/">
             {% csrf_token %}
             <fieldset>
             <legend>Enter Your Sequence Here</legend>
@@ -14,13 +16,20 @@
                <button type="submit">Add</button>
             </div>
 
-            <div class="sequence">
-               {% for sequence in converted_sequence %}
-                  <h3>{{ sequence }}</h3>
-				   {% endfor %}
-            </div>
-
          </form>
+      </div>
+
+      {% if converted_sequence %}
+      <div class="plate">
+         RESULT
+         <div class="sequence">
+            {% for sequence in converted_sequence %}
+               <p>{{ sequence }}</p>
+				{% endfor %}
+         </div>
+      </div>
+      {% endif %}
+
 	</div>
 </section>
 	

@@ -4,7 +4,9 @@
 
 <section id="reverseComplement">
     <div class="container">
-		<form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/genome_manipulation/reverse_complement/">
+		
+      <div class="plate">
+         <form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/genome_manipulation/reverse_complement/">
             {% csrf_token %}
             <fieldset>
             <legend>Enter Your Sequence Here</legend>
@@ -13,9 +15,17 @@
             <div>
                <button type="submit">Add</button>
             </div>
-
-            <h3 class="sequence">{{ reversed_sequence }}</h3>
          </form>
+      </div>
+
+         {% if reversed_sequence %}
+         <div class="plate">
+            RESULT
+            <div class="sequence">
+               <p>{{ reversed_sequence }}</p>
+            </div>
+         </div>
+         {% endif %}
 	</div>
 </section>
 

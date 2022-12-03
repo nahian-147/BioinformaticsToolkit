@@ -6,7 +6,9 @@
 
 <head>
 
-    <title>Bioinformatics</title>
+    <title>
+      {{ title }}
+    </title>
    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -26,15 +28,62 @@
     <link rel="stylesheet" type="text/css" href="{% static  'fountainpens/css/owl.carousel.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static  'fountainpens/css/owl.theme.default.min.css' %}"> -->
 
+    <link rel="stylesheet" href="{% static 'css/sequence.css' %}">
+    <link rel="stylesheet" href="{% static 'css/arrange.css' %}">
+    <link href="{% static 'css/sidebars.css' %}" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/footers/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sidebars/">
+
     <style>
-      .sequence{
-        font-family: 'JetBrains Mono', Courier, monospace;
-        padding: 1%;
-        width: 80%;
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
       }
-      .plate{
-        padding: 1%;
-        width: 80%;
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
       }
     </style>
 
@@ -44,9 +93,7 @@
 
     <section class="preloader">
         <div class="spinner">
-
             <span class="spinner-rotate"></span>
-
         </div>
     </section>
 
@@ -58,10 +105,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              {% comment %} <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/home">Home</a>
-              </li> {% endcomment %}
-              <li class="nav-item dropdown">
+              </li>
+              {% comment %} <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Genome Manipulation
                 </a>
@@ -70,27 +117,105 @@
                   <li><a class="dropdown-item" href="/genome_manipulation/reverse_complement">Reverse Complement</a></li>
                   <li><a class="dropdown-item" href="/genome_manipulation/protein_synthesis">Protein Synthesis</a></li>
                 </ul>
-              </li>
+              </li> {% endcomment %}
               {% comment %} <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/genome_manipulation/">Genome Manipulation</a>
               </li> {% endcomment %}
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a class="nav-link" href="/gene_prediction/">Gene Prediction</a>
-              </li>
-              <li class="nav-item">
+              </li> {% endcomment %}
+              {% comment %} <li class="nav-item">
                 <a class="nav-link" href="">Gene Clustering</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">Phylogenetic Tree</a>
-              </li>
+              </li> {% endcomment %}
             </ul>
           </div>
         </div>
       </nav>
 
 <body>
+  
+  <main class="d-flex flex-nowrap">
+  
+    <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+            Genome Manipulation
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="/genome_manipulation/translation/" class="link-dark d-inline-flex text-decoration-none rounded">Translation</a></li>
+              <li><a href="/genome_manipulation/reverse_complement" class="link-dark d-inline-flex text-decoration-none rounded">Reverse Complement</a></li>
+              <li><a href="/genome_manipulation/protein_synthesis" class="link-dark d-inline-flex text-decoration-none rounded">Protein Synthesis</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+            Gene Prediction
+          </button>
+          <div class="collapse" id="dashboard-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="/gene_prediction/" class="link-dark d-inline-flex text-decoration-none rounded">Gene Prediction</a></li>
+              {% comment %} <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Monthly</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Annually</a></li> {% endcomment %}
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+            Gene Clustering
+          </button>
+          <div class="collapse" id="orders-collapse">
+            {% comment %} <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Processed</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Shipped</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Returned</a></li>
+            </ul> {% endcomment %}
+          </div>
+        </li>
+        {% comment %} <li class="border-top my-3"></li> {% endcomment %}
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+            Phylogenetic Tree
+          </button>
+          <div class="collapse" id="account-collapse">
+            {% comment %} <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New...</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
+              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>
+            </ul> {% endcomment %}
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
 
-    {% block content %}{% endblock %}
+    {% comment %} <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">&copy; 2022 MEC, Inc</p>
+      </footer>
+    </div> {% endcomment %}
+
+  </main>  
+    
+    <script src="{% static 'scripts/sidebars.js' %}"></script>
 
 </body>
 

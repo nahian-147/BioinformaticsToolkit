@@ -8,7 +8,7 @@ from basicClassesAndForms.forms import UploadFileForm
 from os import system
 
 def home(request):
-    return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm()})
+    return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm(),'title' : 'Gene Prediction'})
 
 def predict(request):
     if request.method == 'POST':
@@ -26,10 +26,11 @@ def predict(request):
             orfs = findPotentialCodingSegments(sq,stopList)
 
             context = {
-	            'orfs':orfs
+	            'orfs':orfs,
+                'title' : 'Gene Prediction'
             }
             return render(request,'genePrediction/open_reading_frame.html',context)
         else:
-            return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm()})
+            return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm(),'title' : 'Gene Prediction'})
     else:
-        return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm()})
+        return render(request,'genePrediction/gene_prediction.html',{'form' : UploadFileForm(),'title' : 'Gene Prediction'})

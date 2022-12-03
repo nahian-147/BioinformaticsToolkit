@@ -4,7 +4,9 @@
 
 <section id="home">
     <div class="container">
-		<form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/genome_manipulation/translation/">
+
+      <div class="plate">
+         <form id="addform" class="form" method="POST" enctype="multipart/form-data" action="/genome_manipulation/translation/">
             {% csrf_token %}
             <fieldset>
             <legend>Enter Your Sequence Here</legend>
@@ -13,9 +15,14 @@
             <div>
                <button type="submit">Add</button>
             </div>
-
-            <h3 class="sequence">{{ translated_sequence }}</h3>
          </form>
+      </div>
+
+         {% if translated_sequence %}
+         <div class="plate">
+            RESULT <p class="sequence">{{ translated_sequence }}</p>
+         </div>
+         {% endif %}
 	</div>
 </section>
 	

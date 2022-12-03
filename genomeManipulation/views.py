@@ -17,14 +17,15 @@ def translation(request):
             
             context = {
                 'translated_sequence' : translate(genomeSequence),
-                'form': form
+                'form' : form,
+                'title' : "Translation"
             }
 
             return render(request,'genomeManipulation/translation.html',context)
             
         else:
             form = GenomeSequenceInputForm()
-    return render(request,'genomeManipulation/translation.html',{'form': form})
+    return render(request,'genomeManipulation/translation.html',{'form': form,'title' : "Translation"})
     
 def reverseComplementView(request):
     form = GenomeSequenceInputForm(request.POST) 
@@ -36,7 +37,8 @@ def reverseComplementView(request):
             
             context = {
                 'reversed_sequence' : reverseComplement(genomeSequence),
-                'form': form
+                'form' : form,
+                'title' : 'Reverse Complement'
             }
 
             return render(request,'genomeManipulation/reverse_complement.html',context)
@@ -44,7 +46,7 @@ def reverseComplementView(request):
             
         else:
             form = GenomeSequenceInputForm()
-    return render(request,'genomeManipulation/reverse_complement.html',{'form': form})
+    return render(request,'genomeManipulation/reverse_complement.html',{'form': form,'title' : 'Reverse Complement'})
 
 def proteinSynthesisView(request):
     form = GenomeSequenceInputForm(request.POST) 
@@ -56,7 +58,8 @@ def proteinSynthesisView(request):
             
             context = {
                 'converted_sequence' : computeProteinChain(genomeSequence),
-                'form': form
+                'form' : form,
+                'title' : 'Protein Synthesis'
             }
 
             return render(request,'genomeManipulation/protein_synthesis.html',context)
@@ -64,4 +67,4 @@ def proteinSynthesisView(request):
             
         else:
             form = GenomeSequenceInputForm()
-    return render(request,'genomeManipulation/protein_synthesis.html',{'form': form})
+    return render(request,'genomeManipulation/protein_synthesis.html',{'form': form,'title' : 'Protein Synthesis'})
