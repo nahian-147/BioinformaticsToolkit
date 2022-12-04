@@ -3,5 +3,13 @@
     border: 15px;
     padding: 10px;
     width: 100%;
-    scroll-behavior: inherit;
+    margin: auto;
+    height: auto;
+    padding: 10px;
+  }
+
+  .plateScroll{
+    overflow: hidden;
+    overflow-y: scroll;
+    height: auto;
   }

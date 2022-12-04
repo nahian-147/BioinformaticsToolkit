@@ -89,8 +89,9 @@
 
 </head>
 
-<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body>
 
+  <div>
     <section class="preloader">
         <div class="spinner">
             <span class="spinner-rotate"></span>
@@ -135,17 +136,17 @@
         </div>
       </nav>
 
-<body>
-  
-  <main class="d-flex flex-nowrap">
-  
-    <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-      <ul class="list-unstyled ps-0">
+  <table style="width:100%;">
+    <tr>
+      <td style="vertical-align: top;">
+        <div>
+          <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+            <ul class="list-unstyled ps-0">
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
             Genome Manipulation
           </button>
-          <div class="collapse show" id="home-collapse">
+          <div class="collapse" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><a href="/genome_manipulation/translation/" class="link-dark d-inline-flex text-decoration-none rounded">Translation</a></li>
               <li><a href="/genome_manipulation/reverse_complement" class="link-dark d-inline-flex text-decoration-none rounded">Reverse Complement</a></li>
@@ -195,12 +196,18 @@
         </li>
       </ul>
     </div>
-  
-    <div class="container">
-      {% block content %}{% endblock %}
-    </div>
+  </div>
+      </td>
 
-    {% comment %} <div class="container">
+      <td>
+        <div class="container">
+           {% block content %}{% endblock %}
+        </div>
+      </td>
+
+      <tr>
+      <td colspan="2">
+        <div class="container">
       <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
@@ -211,9 +218,13 @@
         </ul>
         <p class="text-center text-muted">&copy; 2022 MEC, Inc</p>
       </footer>
-    </div> {% endcomment %}
+    </div>       
+      </td>
+      </tr>
+    </tr>
+  </table>
 
-  </main>  
+  </div>
     
     <script src="{% static 'scripts/sidebars.js' %}"></script>
 
